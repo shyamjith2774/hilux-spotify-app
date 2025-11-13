@@ -1,14 +1,35 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import DisplayHome from './DisplayHome'
-import { Routes,Route } from 'react-router-dom'
+import { Routes,Route, useLocation } from 'react-router-dom'
+import AlbumData from './AlbumData'
+import { albumsData } from '../assets/assets'
 
 const Display = () => {
+    const Displaref=useRef();
+    const Location=useLocation();
+    const isAlbum=Location.pathname.includes("album")
+    const AlbumID=isAlbum? Location.pathname.slice(-1) : "";
+    const Bgcolor=albumsData[Number(AlbumID)].bgColor
+    
+   
+
+    useEffect(()=>{
+        if(isAlbum){
+            Displaref.current.style.background=`linear-gradient(${Bgcolor},#121212)`
+        }
+       else{
+             Displaref.current.style.background=''
+       }
+    })
   return (
-    <div className='w-full m-2 px-6 pt-4 rounded bg-[#121212] text-white overflow-auto lg:w-[75%] lg:ml-0'>
+
+    <div  ref={Displaref} className='w-full m-2 px-6 pt-4 rounded bg-[#121212] text-white overflow-auto lg:w-[75%] lg:ml-0'>
            
         <Routes>
             <Route path='/' element={<DisplayHome/>}/>
-            {/* <Route  /> */}
+             <Route path='/album/:id' element={<AlbumData/>}/>
+           
+           
 
         </Routes>
 
@@ -19,3 +40,6 @@ const Display = () => {
 }
 
 export default Display
+
+
+

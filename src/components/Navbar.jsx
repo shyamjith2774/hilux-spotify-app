@@ -1,7 +1,9 @@
 import React from 'react'
 import { assets } from '../assets/assets'
+import { useNavigate } from 'react-router-dom'
 
 const Navbar = () => {
+    const navigate=useNavigate()
   return (
     <>
     {/* First section of navbar */}
@@ -10,8 +12,8 @@ const Navbar = () => {
            
             {/* left side arrow buttons of first section*/}
             <div className='flex items-center gap-3'>
-                <img src={assets.arrow_left} className='w-8 bg-black p-2  rounded-full cursor-pointer' alt="" />
-                <img src={assets.arrow_right} className='w-8 bg-black p-2  rounded-full cursor-pointer' alt="" />
+                <img src={assets.arrow_left} onClick={()=>navigate(-1)} className='w-8 bg-black p-2  rounded-full cursor-pointer' alt="" />
+                <img src={assets.arrow_right} onClick={()=>navigate(1)} className='w-8 bg-black p-2  rounded-full cursor-pointer' alt="" />
             </div>
 
             {/* right side buttons of first section*/}
