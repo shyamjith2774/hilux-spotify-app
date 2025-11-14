@@ -32,7 +32,8 @@ const Navbar = () => {
             <p className='bg-white text-black px-4 py-1 rounded-2xl'>All</p>
             <p className='bg-black px-4 py-1 rounded-2xl'>Music</p>
             <p className='bg-black px-4 py-1 rounded-2xl'>Podcasts</p>
-        </div>
+            
+      </div>
     
     </>
   )
